@@ -1,0 +1,282 @@
+# CURSO FIAP LINUX
+- PowerShell -> MSDOS (windows)
+- BASH -> SHELL (linux)
+- / (raiz unix linux)
+### CMD(s):
+- man command Ex.: man ls (man manual linux command ) 
+- - "/" (pesquisar no vim)
+- - :q (sair do editor)
+- command --help Ex.: ls --help
+- su (mudar usuario)
+- exit (sair user)
+- apt install sudo (instalar pacotes)
+- apt remove sudo (remover pacotes)
+- apt update (atualiza pacotes)
+- apt upgrade (compara pacotes)
+- sudo (usar privilegios de root)
+- usermod -aG sudo "usuario" (adicionar user no grupo sudo)
+#### pastas/diretorios
+- bin (principais executaveis)
+- boot (bootaveis iniciar sistema)
+- dev (pseudos aquivos - arquivos de configuracao de perifericos "drives" Ex.:pendrive,webcam... )
+- etc (configuracao dos principais servicos)
+- home (diretorios de usuarios)
+- lib (bibliotecas do sistema)
+- lib64 (bibliotecas do sistema)
+- lost+found (achados e perdidos, arquivos conropidos)
+- media (diretorio de montagem, CDrom e pendrive)
+- mnt (diretorio de montagem)
+- opt (diretorio opconal de instalacao)
+- proc (processador pseudos aquivos  info processador,memoria, hardware fisicos... )
+- root (diretorio home super user)
+- run (processos do sistema operacional)
+- sbin (super binarios comandos espesificos do linux para o root )
+- srv (diretorio de servicos do sistema)
+- sys (configuracoes para dispositivos usb)
+- tmp (diretorio de arquivos temporarios)
+- usr (programas do linux de tamanho fixo)
+- var (programas e arquivos do linux de tamanho variavel, Ex.: logs)
+### CMD(s) usuarios:
+- passwd (trocar a senha dos usuarios)
+- passwd root (mudar senha root)
+- adduser "novo usuario" (adicionar usuario, esse cmd cria um novo grupo)
+- su "novo usuario" (mudar usuario)
+- groupadd (criar um novo grupo)
+- usermod -aG "name group" "nome usuario"
+- usermod -L "nome usuario" (bloquear usuario)
+- usermod -U "nome usuario" (desbloquear usuario)
+### CMD(s) arquivos e pastas:
+- ls (lista arquivos)
+- - ls -alh (lista arquivos com detalhes, a lista all incluido arquivos ocultos, l list com mais info, h lista visual tamanho)
+- - - drwx-w-r-x -> d(tipo) r(read) w(write) x(executar)
+- - - - tipos: d(diretorio) , l(link, aponta para outro arquivo) , c(caracter) , b(bites), -(arquivo comum)
+- - - - primeiro conjunto rwx - representa o dono do arquivo
+- - - - segundo conjunto -w- - representa o grupo do arquivo
+- - - - segundo conjunto r-x - representa o acesso geral
+#### criando e mudando de diretorios
+- pwd (visualizar diretorio atual)
+- mkdir "nome diretorio" (criar diretorio)
+- - mkdir -p "nome diretorio"/"nome sub-diretorio"/"nome sub-sub-diretorio" (criar pasta com subdiretorios em cascata)
+- cd "nome diretorio" (entrar em um diretorio)
+#### copiando, movendo e removendo arquivo
+- cp "path origem + nome arquivo" "path destino + nome arquivo" (copiar arquivo)
+- -  cp -rvp "path origem + diretorio" "path destino + diretorio" (r copiar pasta com arquivos e subpastas, v verbose, p mantem nivel de permissoes)
+- mv "path origem + nome arquivo ou diretorio" "path destino + nome arquivo ou diretorio" (move arquivo ou diretorio)
+- rmdir (apagar diretorios quando vazio)
+- rm "nome arquivo" (deletar aquivo)
+- - rm -rf "nome diretorio" (deleta diretorio de r forma recursiva, f forcar remocao)
+#### visualizando conteudo de arquivos
+- cat "nome arquivo" (visualizar conteudo do arquivo)
+- head -n 15 "nome arquivo" (visualizar conteudo inicial do arquivo)
+- tail -n 15 "nome arquivo" (visualizar conteudo final do arquivo)
+- less "nome arquivo" (visualizar conteudo do arquivo, quit :q)
+#### localizar e baixar arquivos
+- apt install locate
+- - updatedb (atualizar a base local de path de arquivos e diretorios do linux)
+- - locate "nome arquivo, diretorio ou apenas texto para busca" (localizar arquivo no sistema)
+- grep -r "nome arquivo, diretorio ou apenas texto para busca" "path de busca" (localizar arquivo no sistema no path espesifico)
+- wget "url" (baixar arquivo na web)
+- - wget -c "url" (caso o download de seja interropido podemos voltar de onde parou c continue)
+- apt install links (navegador no modo comando, navegar no terminal)
+- - links "url"
+#### compresao de arquivos
+- apt install unzip
+- - unzip -t "arquivo .zip" (dezipar arquivo t visualizar e testar)
+- apt install gzip bzip2
+- - gz = gzip , bz2 = bzip2
+##### compresao
+- - tar -czvf "arquivo saida nome_arquivo.tar.gz ou nome_arquivo.tgz" "adicionar arquivos" (empacotar arquivos, adicionar tudo em um unico "pacote" , c empacotar , z para zipar usando gzip, v verbose, f poder nomear arquivo)
+- - tar -cjvf "arquivo saida nome_arquivo.tar.bz2 ou nome_arquivo.tbz" "adicionar arquivos" (empacotar arquivos, adicionar tudo em um unico "pacote" , c empacotar , j para zipar usando bzip2, v verbose, f poder nomear arquivo)
+##### descompressao
+- - tar -tzvf "nome_arquivo.tar.gz ou nome_arquivo.tgz desempacotar" (desempacotar arquivos, t testar arquivo , z desempacotar usando gzip, v verbose, f poder nomear arquivo)
+- - tar -tjvf "nome_arquivo.tar.bz2 ou nome_arquivo.tbz" (desempacotar arquivos, t testar arquivo , z desempacotar usando bzip2, v verbose, f poder nomear arquivo)
+- - tar -xzvf "nome_arquivo.tar.gz ou nome_arquivo.tgz desempacotar" (desempacotar arquivos , x desempacotar , z desempacotar usando gzip, v verbose, f poder nomear arquivo)
+- - tar -xjvf "nome_arquivo.tar.bz2 ou nome_arquivo.tbz" (desempacotar arquivos , x desempacotar , z desempacotar usando bzip2, v verbose, f poder nomear arquivo)
+#### gerenciamento de rede
+- apt install net-toolsr
+- ifconfig (lista informacoes de rede e interfaces)
+- ifconfig "nome interface de rede" down (deruba acesso a uma intergace de rede)
+- ifconfig "nome interface de rede" up (habilita acesso a uma intergace de rede)
+- ifconfig "nome interface de rede" "novo ip" netmask "nova mascara" (modificar ip e mascara de uma interface de rede)
+- route (visualizar rotas)
+- route -add net "ip new interface" dev "saida dessa nova interface" (configura uma nova interface e saida dessa interface)
+- route add gw default "ip getway" (adiciona um novo getway)
+- sudo apt install nmap
+- nmap "ip" (scam ports de services abertas em um servidor)
+- apt install apache2
+- /etc/init.d/apache2 start (rodar o apache)
+- nmap "ip" -sV (visualizar ports abertas com amis detalhes)
+#### gerenciando processo ps e top
+- ps (listar processos)
+- - ps -aux (listar processo, a processo relacionados a outros usuarios, u mais informacao, x todos processos)
+- - ps -aux | grep "palavra para buscar no cmd anterior"
+- more EX.: ps -aux | more (more permite pausar para visualizar,  quit :q )
+- top (monitora processos, quit :q )
+- Ctrl + c (parar o processo)
+#### matando precessos com kill
+- gnome-chess (programa de xadrez linux)
+- - gnome-chess & (passar o & executa em segundo plano, liberar o terminal)
+- kill "PID id" (mata execucao do processos, sigkill)
+- - kill -SIGKILL "PID id" (sigkill)
+- kill -SIGSTOP "PID id" (congela execucao do processo)
+- kill -SIGCONT "PID id" (descongela execucao do processo)
+- killall "Nome processo" (matar todos os processos que tem o mesmo nome)
+#### processos em background screen
+- apt install screen
+- screen (rodar processos em segundo plano - terminal virtual)
+- screen -S "nome terminal"
+- - Ctrl + a + d (sair do terminal virtual screen)
+- screen -ls (listar todos os terminais virtuais)
+- screen -r "id terminal" (acessar o terminal virtual)
+- exit (close terminal - fechar o virtual screen)
+#### acessando hosts remotos com SSH
+- DigitalOcean (Maquinas virtuais em cloud)
+- history (lista commandos executados anteriomente)
+- - Ctrl + r (buscar comando executado)
+- telnet (tunel não cryptografado)
+- ssh "user"@"ip" (tunel cryptografado)
+#### copiando para hosts remotos com SCP
+- cat /etc/hosts (ips e apelidos servidores)
+- echo "ip e apelido" >> /etc/hosts (echo printa string,adicionar >> string no final do arquivo)
+- ftp (envio de documentos antigo e lento, pois utiliza o proprio tunel do ssh)
+- scp "documento" "user"@"ip ou apelido":"path servidor remoto" (envio de documentos novo, copia segura)
+#### como subir um serviço SSH seguro
+- apt install ssh (instalar o ssh service)
+- /etc/init.d/ssh start (rodar ssh, abre a porta 22 do servidor)
+- less /etc/ssh/sshd_config (arquivo de configuração do ssh service)
+- Port Knocking (post 22 fica fechada até ser executando regras de acesso)
+#### intoducao ao VI
+- apt install vim
+- vi "nome arquivo" (criar ou abrir um arquivo novo)
+- :q (sair do vi)
+- :q! (sair do vi aquivo sem salvar)
+#### VI modo de comando e modo edicao
+- i (insert, modo de edição)
+- esc (sair do modo de edição)
+- a (insert onde o cusor está, modo de edição)
+- A (insert ao final da linha, modo de edição)
+- o (insert criando uma nova linha, modo de edição)
+#### VI numeração de linhas e navegação
+- vi /var/log/syslog
+- :set nu (inserir numeros das linhas )
+- :"numero da linha" (ir direto para linha solicitada)
+- :G (ir para o final do arquivo)
+- ^ (inicio da linha que o cursor está)
+- $ (final da linha que o cursor está)
+#### salvando arquivo
+- :w (write, salavar sem sair do arquivo Enter para confirmar)
+- J (ir para ultima linha)
+- :wq (salvar e sair)
+- :x (salvar e sair)
+- :"intervalor de linhas seprador por virgula"w "nome do arquivo" Ex.: 3,4w (salvar parte do arquivo atual em outro arquivo)
+#### VI copiar,colar e apagar textos
+- p (perst, para colar uma linha abaixo)
+- yy (yield,ir até alinha que quer copiar) 
+- "valor de linhas"yy (copiar multiplas linhas)
+- y"^ou$" (copiar trechos de linhas, ir com o cursor até o trecho)
+- dd (delete,ir até alinha que quer deletar) 
+- "valor de linhas"dd (deletar multiplas linhas)
+- d"^ou$" (deletar trechos de linhas, ir com o cursor até o trecho)
+- U (desfazer ultimo comando "Ctrl + Z")
+- dd ("deletar") -> p (para colar) (recorte de linhas)
+#### VI localizar e substituindo palavras
+- /"palavra busca" + Enter -> n ou N (localizar palavra, n busca poxima ocorrencia em ordem, N voltar para ocorrencia anterior)
+- :%s/"palavra busca"/"nova palavra"/gc (substituir palavra, g global,c confirmar)
+#### gerenciamento de volumes
+- NTFS (New Technology File System)
+- FAT32 (File Allocation Table 32)
+- EXT (Extended File System)
+- reiserfs (Reiser File System)
+#### fdisk - gerenciamento de partições
+- pseudo arquivo de configuração de partições em /dev/sda (disco principal) sda1 (partição 1 do disco principal), sda2 (partição 2 do disco principal)
+- cat /var/log/syslog (log do sistema) | grep "sda" (filtrar log do sistema para ver o disco principal)
+- fdisk /dev/sda (gerenciar partições do disco principal)
+- - p (listar partições)
+- - q (sair do fdisk)
+- criar uma nova partição:
+- fdisk /dev/sdb (gerenciar partições do segundo disco)
+- - n (criar nova partição)
+- - p (partição primária), l (partição lógica)
+- - +"tamanho" (definir tamanho da partição, Ex.: +10G para 10GB)
+- - t (definir tipo de partição)
+- - 82 (Linux swap), 83 (Linux filesystem), 7 (Windows NTSF), 83 (Linux filesystem)
+- - w (salvar e sair)
+- - q (sair sem salvar)
+- linux swap (partição de troca de memoria, swap)
+- df -h (listar partições montadas, h human readable)
+#### mkfs - criar sistemas de arquivos
+- ls /dev/sd* (listar discos e partições)
+- mkfs -t ext4 /dev/sd* (criar sistema de arquivos na partição)
+- mkfs -t ntfs /dev/sd* (criar sistema de arquivos NTFS na partição)
+#### mount, umount - montar e desmontar partições
+- mount /dev/sd* /mnt (montar partição no diretório /mnt)
+- mount /dev/sd* /media/novaParticao (montar partição no diretório /media/novaParticao)
+- verificar partições montadas:
+- df -h (listar partições montadas)
+- umount /media/novaParticao (desmontar partição)
+- umount /dev/sd* (desmontar partição)
+- /etc/fstab (arquivo de configuração de partições montadas automaticamente)
+- - /dev/sda1 /mnt ext4 defaults 0 0 (exemplo de entrada no fstab)
+- - UUID=1234-5678 /mnt ext4 defaults 0 0 (UUID é um identificador único da partição)
+- - /dev/sda1 /media/novaParticao ext4 defaults 0 0 (usar o caminho do dispositivo)
+- - /dev/sda1 /media/novaParticao ntfs defaults 0 0 (usar o caminho do dispositivo NTFS)
+- - \\"IP"\"path" /mnt/"pasta compartilhada" cifs users,username="username",password="senha",dir_mode=0777,file_mode=0777 0 0 (montar compartilhamento de rede)
+- mount -a (montar todas as partições do fstab)
+- /etc/udev (diretório de dispositivos)
+- /etc/udev/rules.d (diretório de regras do udev)
+- /etc/udev/udev.conf (arquivo de configuração do udev)
+- udev (gerenciador de dispositivos do Linux)
+#### fsck - verificar e corrigir sistemas de arquivos
+- scan disks - windows
+- chkdsk /f (verificar e corrigir sistema de arquivos no Windows)
+- fsck -t ext4 /dev/sd* (verificar e corrigir sistema de arquivos ext4)
+- fsck -t ntfs /dev/sd* (verificar e corrigir sistema de arquivos NTFS)
+- fsck /dev/sd* (verificar e corrigir sistema de arquivos)
+#### agendamento de tarefas com cron
+- tar cfz /var/backups/etc-backup-$(date +%Y-%m-%d).tar.gz /etc (exemplo de comando agendado)
+- crontab -u "usuario" -e (listar tarefas agendadas do usuário)
+- crontab -e (editar o cron do usuário)
+- - * * * * * comando (agendar tarefa, cada asterisco representa um campo de tempo: minuto, hora, dia do mês, mês, dia da semana) 
+- - 5 0 * * * tar cfz /var/backups/etc-backup-$(date +%Y-%m-%d).tar.gz /etc (agendar tarefa para rodar diariamente à cinco minutos após a meia-noite)
+- ls /etc/cron.* (listar diretórios de tarefas agendadas)
+#### Politicas de firewall com iptables
+- iptables -L (listar regras do firewall)
+- iptables -A INPUT -p tcp --dport 22 -j ACCEPT (permitir conexões SSH)
+- iptables -D INPUT -p tcp --dport 22 -j ACCEPT (remover regra de permitir conexões SSH)
+- iptables -dport 22 -j DROP (bloquear conexões SSH)
+- iptables -F (limpar todas as regras do firewall)
+- iptables -i "interface" -p tcp --dport 80 -j ACCEPT (permitir conexões HTTP na interface especificada)
+- iptables -j ACCEPT (permitir todas as conexões)
+- iptables -I INPUT -p tcp --dport 80 -j ACCEPT (inserir regra de permitir conexões HTTP no início da lista)
+- iptables -L -n -v (listar regras do firewall com detalhes)
+- iptables -P INPUT DROP (definir política padrão de entrada como DROP)
+- iptables -p tcp --dport 22 -j ACCEPT (permitir conexões SSH)
+- iptables -s "ip" -j ACCEPT (permitir conexões de um IP específico)
+- iptables -X (remover uma cadeia de regras)
+- Exemplos:
+- vi /etc/firewall.sh (criar script de firewall)
+- - #!/bin/bash (início do script)
+- - iptables -F (limpar regras)
+- - iptables -P INPUT DROP (definir política padrão de entrada como DROP)
+- - iptables -A INPUT -p tcp --dport 22 -j ACCEPT (permitir conexões SSH)
+#### configuracao com portknock
+- apt install knockd (instalar o knockd)
+- vi /etc/knockd.conf (configurar o knockd)
+- - [openSSH] (nome do serviço)
+- - sequence = 7000,8000,9000 (sequência de portas para abrir)
+- - seq_timeout = 5 (tempo limite para a sequência)
+- - start_command = /usr/sbin/iptables -A INPUT -p tcp --dport 22 -j ACCEPT (comando para abrir a porta SSH)
+- - stop_command = /usr/sbin/iptables -D INPUT -p tcp --dport 22 -j ACCEPT (comando para fechar a porta SSH)
+- - tcpflags = syn (flags TCP)
+- vi /etc/default/knockd (configurar o knockd)
+- - START_KNOCKD=1 (iniciar o knockd)
+- systemctl start knockd (iniciar o knockd)
+- systemctl enable knockd (habilitar o knockd para iniciar automaticamente)
+- knock "ip" 7000 8000 9000 (enviar sequência de portas para abrir a porta SSH)
+- ssh "user"@"ip" (conectar via SSH)
+- knock "ip" 7000 8000 9000 (enviar sequência de portas para fechar a porta SSH)
+- systemctl status knockd (verificar o status do knockd)
+- journalctl -u knockd (verificar logs do knockd)
+- knockd -v (verificar versão do knockd)
+- for x in {7000..9000}; do knock "ip" $x; done (enviar sequência de portas em loop)
+- for x in 7000 8000 9000; do nmap -Pn --host-timeout 1000 --max-retries 1 -p $x "ip"; done (verificar portas abertas)
